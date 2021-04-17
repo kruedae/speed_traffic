@@ -27,15 +27,16 @@ public class TrafficLight {
     Luz actual = verde; /*OJO: Aquí todos los semáforos están arrancando en verde,
      nuevamente hay que coordinar con la otra dirección*/
 
+    Place PlaceABloquear;
 
     //Constructor
-    TrafficLight(int durVerdeUsuario, int durVerdeOtraDirection) {
+    TrafficLight(int durVerdeEstaDirection, int durVerdeOtraDirection, Place placeEnFrente) {
+        this.PlaceABloquear = placeEnFrente;
+        
         amarilla = new Luz("Amarilla", 6);
         roja = new Luz("Roja", durVerdeOtraDirection + amarilla.duration);
-        verde = new Luz("Verde", durVerdeUsuario);
-
-        /*ES NECESARIO COORDINAR LUZ CON EL DE LA OTRA DIRECCIÓN (EL VERDE DE 
-         ESA MÁS EL AMARILLO (6) SERÁ  ES EL ROJO AQUÍ*/
+        verde = new Luz("Verde", durVerdeEstaDirection);
+        
     }
 
     //Métodos
@@ -61,8 +62,8 @@ public class TrafficLight {
         timer++;
     }
 
-    boolean bloquearCalle() {
-        return roja.duration != roja.restante;
+    void bloquearCalle() {
+        PlaceABloquear.setBlocked(roja.duration != roja.restante);
     }
 	
 }
