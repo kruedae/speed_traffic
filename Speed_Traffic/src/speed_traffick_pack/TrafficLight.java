@@ -1,72 +1,64 @@
 package speed_traffick_pack;
 
-class Luz {
-
-    String luz;
-    int duration;
-    int restante;
-
-    Luz(String l, int d) {
-        this.luz = l;
-        this.duration = d;
-        this.restante = d;
-    }
-
-    void reducirRestante() {
-        this.restante--;
-    }
-}
 
 public class TrafficLight {
-    int timer;
 
-    Luz roja;
-    Luz verde;
-    Luz amarilla;
+    //Atributos propios del semáforo
+    int timer = 0;
+    int ciclo = 0;
+    int verdeDuration;
+    int amarilloDuration;
+    int rojoDuration;
+    int cicloDuration;
+    String luzActual;
 
-    Luz actual = verde; /*OJO: Aquí todos los semáforos están arrancando en verde,
-     nuevamente hay que coordinar con la otra dirección*/
-
-    //Puntero al place que el semáforo debe bloquear
-    //Y si commiteo desde el SourceTree
-    Place PlaceABloquear;
-    Place nada;
+    //Punteros al place y al Road con el que interactúa el semáforo
+    Place placeABloquear;
+    String Direction;
 
     //Constructor
-    TrafficLight(int durVerdeEstaDirection, int durVerdeOtraDirection, Place placeEnFrente) {
-        this.PlaceABloquear = placeEnFrente;
-        
-        amarilla = new Luz("Amarilla", 6);
-        roja = new Luz("Roja", durVerdeOtraDirection + amarilla.duration);
-        verde = new Luz("Verde", durVerdeEstaDirection);
-        
+    TrafficLight(int durVerdeEstaDirection, int durVerdeOtraDirection, Place placeEnFrente,
+            Road roadEnFrente) {
+
+        this.amarilloDuration = 6;
+        this.rojoDuration = durVerdeOtraDirection + amarilloDuration;
+        this.verdeDuration = durVerdeEstaDirection;
+        this.cicloDuration = this.verdeDuration + this.amarilloDuration + this.rojoDuration;
+
+        this.placeABloquear = placeEnFrente;
+        this.Direction = roadEnFrente.getDirection();
+
     }
 
-    //Métodos
-    void ActualizarLuces() {
-        if (timer == 0) {
-            actual.restante--;
-        }
-        
-        if (actual.restante > 0)/*reducir el restante if()...*/ {
-            actual.restante--;
-        } else /*cambiar luz*/{
-            if(actual.luz.equals("Verde")){
-                verde.restante = verde.duration;
-                actual = amarilla;
-            } else if(actual.luz.equals("Amarilla")){
-                amarilla.restante = amarilla.duration;
-                actual = roja;
-            } else if (actual.luz.equals("Roja")){
-                roja.restante = roja.duration;
-                actual = verde;
+    //Método
+    void actualizarSemáforo() {
+        /*Actualiza la luz (Por el momento las horizontales empezaran en verde y las verticales en rojo)*/
+        if (this.Direction.equals("East") || this.Direction.equals("West")) {
+            if (timer == ciclo * this.cicloDuration) {
+                this.luzActual = "Verde";
+            } else if (timer == this.verdeDuration + ciclo * this.cicloDuration) {
+                this.luzActual = "Amarilla";
+                //Bloquea el place 
+                placeABloquear.setBlocked(true);
+            } else if (timer == this.verdeDuration + this.amarilloDuration + ciclo * this.cicloDuration) {
+                this.luzActual = "Roja";
             }
+        } else /*es road vertical*/ {
+            if (timer == ciclo * this.cicloDuration) {
+                this.luzActual = "Roja";
+            } else if (timer == this.rojoDuration + ciclo * this.cicloDuration) {
+                this.luzActual = "Verde";
+            } else if (timer == this.rojoDuration + this.verdeDuration + ciclo * this.cicloDuration) {
+                this.luzActual = "Amarilla";
+                //Bloquea el place 
+                placeABloquear.setBlocked(true);
+            }
+        }
+
+        //Avanza timer y ciclo 
+        if (timer % cicloDuration == 0 && timer >= 1) {
+            ciclo++;
         }
         timer++;
     }
-
-    void bloquearCalle() {
-        PlaceABloquear.setBlocked(roja.duration != roja.restante);
-    }
-	
 }
