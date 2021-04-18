@@ -20,7 +20,7 @@ public class TrafficLight {
     TrafficLight(int durVerdeEstaDirection, int durVerdeOtraDirection, Place placeEnFrente,
             Road roadEnFrente) {
 
-        this.amarilloDuration = 6;
+        this.amarilloDuration = 4;
         this.rojoDuration = durVerdeOtraDirection + amarilloDuration;
         this.verdeDuration = durVerdeEstaDirection;
         this.cicloDuration = this.verdeDuration + this.amarilloDuration + this.rojoDuration;
