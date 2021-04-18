@@ -27,6 +27,7 @@ public class TrafficLight {
     Luz actual = verde; /*OJO: Aquí todos los semáforos están arrancando en verde,
      nuevamente hay que coordinar con la otra dirección*/
 
+    //Puntero al place que el semáforo debe bloquear
     Place PlaceABloquear;
 
     //Constructor
