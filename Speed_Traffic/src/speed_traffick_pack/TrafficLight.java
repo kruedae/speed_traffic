@@ -28,7 +28,9 @@ public class TrafficLight {
      nuevamente hay que coordinar con la otra dirección*/
 
     //Puntero al place que el semáforo debe bloquear
+    //Y si commiteo desde el SourceTree
     Place PlaceABloquear;
+    Place nada;
 
     //Constructor
     TrafficLight(int durVerdeEstaDirection, int durVerdeOtraDirection, Place placeEnFrente) {
