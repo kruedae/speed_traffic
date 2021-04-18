@@ -45,9 +45,29 @@ public class Road {
     
     // Cambie la funcion para que en lugar de recibir un place de entrada lo cree
     // Ademas lo puse como void porque no estaba retornando nada
-    // Por ultimo hice que modificara
+    // Por ultimo hice que modificara la direccion
     public void addPlace(){
     	Place p = new Place(false);
+        switch(this.direction){
+            case "North":
+                this.end.setNorth(p);
+                this.end = p;
+                break;
+            case "South":
+                this.end.setSouth(p);
+                this.end = p;
+                break;
+            case "East":
+                this.end.setEast(p);
+                this.end = p;
+                break;
+            case "West":
+                this.end.setWest(p);
+                this.end = p;
+                break;
+        }
+    }
+    public void addPlace(Place p){
         switch(this.direction){
             case "North":
                 this.end.setNorth(p);
