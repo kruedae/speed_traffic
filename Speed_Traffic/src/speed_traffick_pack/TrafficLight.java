@@ -16,11 +16,82 @@ public class TrafficLight {
     Place placeABloquear;
     String Direction;
 
+    public int getTimer() {
+        return timer;
+    }
+
+    public void setTimer(int timer) {
+        this.timer = timer;
+    }
+
+    public int getCiclo() {
+        return ciclo;
+    }
+
+    public void setCiclo(int ciclo) {
+        this.ciclo = ciclo;
+    }
+
+    public int getVerdeDuration() {
+        return verdeDuration;
+    }
+
+    public void setVerdeDuration(int verdeDuration) {
+        this.verdeDuration = verdeDuration;
+    }
+
+    public int getAmarilloDuration() {
+        return amarilloDuration;
+    }
+
+    public void setAmarilloDuration(int amarilloDuration) {
+        this.amarilloDuration = amarilloDuration;
+    }
+
+    public int getRojoDuration() {
+        return rojoDuration;
+    }
+
+    public void setRojoDuration(int rojoDuration) {
+        this.rojoDuration = rojoDuration;
+    }
+
+    public int getCicloDuration() {
+        return cicloDuration;
+    }
+
+    public void setCicloDuration(int cicloDuration) {
+        this.cicloDuration = cicloDuration;
+    }
+
+    public String getLuzActual() {
+        return luzActual;
+    }
+
+    public void setLuzActual(String luzActual) {
+        this.luzActual = luzActual;
+    }
+
+    public Place getPlaceABloquear() {
+        return placeABloquear;
+    }
+
+    public void setPlaceABloquear(Place placeABloquear) {
+        this.placeABloquear = placeABloquear;
+    }
+
+    public String getDirection() {
+        return Direction;
+    }
+
+    public void setDirection(String Direction) {
+        this.Direction = Direction;
+    }
+
     //Constructor
     TrafficLight(int durVerdeEstaDirection, int durVerdeOtraDirection, Place placeEnFrente,
             Road roadEnFrente) {
 
-        this.amarilloDuration = 4;
         this.rojoDuration = durVerdeOtraDirection + amarilloDuration;
         this.verdeDuration = durVerdeEstaDirection;
         this.cicloDuration = this.verdeDuration + this.amarilloDuration + this.rojoDuration;
