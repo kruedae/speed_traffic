@@ -14,7 +14,7 @@ public class TrafficLight {
 
     //Punteros al place y al Road con el que interactúa el semáforo
     Place placeABloquear;
-    String Direction;
+    int Direction;
 
     public int getTimer() {
         return timer;
@@ -104,7 +104,7 @@ public class TrafficLight {
     //Método
     void actualizarSemáforo() {
         /*Actualiza la luz (Por el momento las horizontales empezaran en verde y las verticales en rojo)*/
-        if (this.Direction.equals("East") || this.Direction.equals("West")) {
+        if (this.Direction==2 || this.Direction == 3) {
             if (timer == ciclo * this.cicloDuration) {
                 this.luzActual = "Verde";
             } else if (timer == this.verdeDuration + ciclo * this.cicloDuration) {
