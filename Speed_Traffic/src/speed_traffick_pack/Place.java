@@ -77,7 +77,7 @@ public class Place {
     
     
 	public boolean FreeToMove(int a) {
-		boolean state_nextplace = false;
+		boolean state_nextplace = true;
 		if(a == 0) {
 			state_nextplace = north.blocked;
 		}
@@ -93,4 +93,21 @@ public class Place {
 		return state_nextplace;
 	}
     
+	public Place GetnextPlace_direction(int a) {
+		Place nextplace = null;
+		if(a == 0) {
+			nextplace = this.north;
+		}
+		if(a == 1) {
+			nextplace = this.south;
+		}
+		if(a == 2) {
+			nextplace = this.east;
+		}
+		if(a == 3) {
+			nextplace = this.west;
+		}
+		return nextplace;
+	}
+	
 }

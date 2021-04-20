@@ -5,26 +5,48 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Road calle1 = new Road("North");
+		
+		// Creare dos calles. La variable auxiliar tendra el place interseccion
+		Road calle1 = new Road(0);
 		Place aux = null;
-		System.out.println(calle1.getEnd());
-		for(int i=0; i<5; i++) {
+		// 10 es el numero de casillas. 4 es el punto de interseccion
+		for(int i=0; i<10; i++) {
 			calle1.addPlace();
-			if (i==2) {
+			if (i==4) {
 				aux = calle1.getEnd();
 			}
 		}
-		Road calle2 = new Road("West");
-		for(int i=0; i<5; i++) {
-			calle2.addPlace();
-			if (i==2) {
+		Road calle2 = new Road(3);
+		for(int i=0; i<10; i++) {
+			if (i==4) {
 				calle2.addPlace(aux);
 				System.out.println(aux);
-				
+			}
+			else {
+				calle2.addPlace();
 			}
 		}
-		System.out.println(calle1.getEnd());
-
+		
+		// Creo dos carros que inicien en cada una de las calles
+		Car carro1 = new Car("yellow", 0, calle1.getStart());
+		System.out.println(carro1.place);
+		Car carro2 = new Car("red", 3, calle2.getStart());
+		System.out.println(carro2.place);
+		
+		// Creo un semaforo
+		
+		// Hare andar los carros
+		int tmax = 10;
+		int t = 0;
+		while(t<tmax) {
+			System.out.println(t);
+			carro1.MoveCar();
+			System.out.println(carro1.place);
+			carro2.MoveCar();
+			System.out.println(carro2.place);
+			t++;
+		}
+		
 	}
 
 }

@@ -13,18 +13,27 @@ package speed_traffick_pack;
 public class Car {
     String color;
     Integer direction;
-    Boolean place;
+    Place place;
     public Car(){
     }
 
-    public Car(String color, Integer direction, Boolean place) {
+    public Car(String color, Integer direction, Place place) {
         this.color = color;
         this.direction = direction;
         this.place = place;
+        this.place.setBlocked(true);
     }
 
     public Car(String color) {
         this.color = color;
+    }
+    
+    public void MoveCar() {
+    	if(!this.place.FreeToMove(this.direction)) {
+    		this.place.setBlocked(false);
+    		this.place = this.place.GetnextPlace_direction(this.direction);
+    		this.place.setBlocked(true);
+    	}
     }
     
     
