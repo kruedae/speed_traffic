@@ -80,14 +80,6 @@ public class TrafficLight {
         this.placeABloquear = placeABloquear;
     }
 
-    public String getDirection() {
-        return Direction;
-    }
-
-    public void setDirection(String Direction) {
-        this.Direction = Direction;
-    }
-
     //Constructor
     TrafficLight(int durVerdeEstaDirection, int durVerdeOtraDirection, Place placeEnFrente,
             Road roadEnFrente) {
