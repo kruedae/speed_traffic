@@ -40,6 +40,9 @@ public class Main {
 		Car_Queue Car_queue = new Car_Queue();
 		Car_queue.enqueue(carro1);
 		Car_queue.enqueue(carro2);
+		Car_Queue Car_queue2 = new Car_Queue();
+		Car_queue2.Generate_Cars(100);
+		System.out.println(Car_queue2.dequeue().ID);
 		// Creo un semaforo
 		
 		// Hare andar los carros
