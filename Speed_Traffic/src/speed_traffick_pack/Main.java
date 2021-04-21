@@ -37,14 +37,16 @@ public class Main {
 		Car carro2 = new Car("red", 3, calle2.getStart());
 		System.out.println(carro2.place);
 		
-		// Creo un semaforo
-		
+		// Creo un semaforo: Note que interrumpe ambos carros pues sólo hay un place interseccion
+		TrafficLight semaforo = new TrafficLight(3, 1, aux, calle2);
 		// Hare andar los carros
 		int tmax = 10;
 		int t = 0;
 		while(t<tmax) {
 			System.out.println(t);
-			carro1.MoveCar();
+                        semaforo.actualizarSemaforo();
+                        System.out.println(semaforo.getLuzActual());
+                        carro1.MoveCar();
 			System.out.println(carro1.place);
 			carro2.MoveCar();
 			System.out.println(carro2.place);

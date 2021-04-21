@@ -1,6 +1,5 @@
 package speed_traffick_pack;
 
-
 public class TrafficLight {
 
     //Atributos propios del semáforo
@@ -80,10 +79,19 @@ public class TrafficLight {
         this.placeABloquear = placeABloquear;
     }
 
+    public int getDirection() {
+        return Direction;
+    }
+
+    public void setDirection(int Direction) {
+        this.Direction = Direction;
+    }
+
     //Constructor
     TrafficLight(int durVerdeEstaDirection, int durVerdeOtraDirection, Place placeEnFrente,
             Road roadEnFrente) {
 
+        this.amarilloDuration = 1;
         this.rojoDuration = durVerdeOtraDirection + amarilloDuration;
         this.verdeDuration = durVerdeEstaDirection;
         this.cicloDuration = this.verdeDuration + this.amarilloDuration + this.rojoDuration;
@@ -94,11 +102,13 @@ public class TrafficLight {
     }
 
     //Método
-    void actualizarSemáforo() {
+    public void actualizarSemaforo() {
         /*Actualiza la luz (Por el momento las horizontales empezaran en verde y las verticales en rojo)*/
-        if (this.Direction==2 || this.Direction == 3) {
+        if (this.Direction == 2 || this.Direction == 3) {
             if (timer == ciclo * this.cicloDuration) {
                 this.luzActual = "Verde";
+                //Desbloquea el place 
+                placeABloquear.setBlocked(false);
             } else if (timer == this.verdeDuration + ciclo * this.cicloDuration) {
                 this.luzActual = "Amarilla";
                 //Bloquea el place 
@@ -111,6 +121,8 @@ public class TrafficLight {
                 this.luzActual = "Roja";
             } else if (timer == this.rojoDuration + ciclo * this.cicloDuration) {
                 this.luzActual = "Verde";
+                //Desbloquea el place 
+                placeABloquear.setBlocked(false);
             } else if (timer == this.rojoDuration + this.verdeDuration + ciclo * this.cicloDuration) {
                 this.luzActual = "Amarilla";
                 //Bloquea el place 
@@ -119,9 +131,9 @@ public class TrafficLight {
         }
 
         //Avanza timer y ciclo 
-        if (timer % cicloDuration == 0 && timer >= 1) {
+        timer++;
+        if ((timer) % cicloDuration == 0 && timer > 0) {
             ciclo++;
         }
-        timer++;
     }
 }
