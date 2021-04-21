@@ -1,4 +1,4 @@
-package speed_traffick_pack;
+	package speed_traffick_pack;
 
 
 public class Main {
@@ -8,25 +8,29 @@ public class Main {
 		
 		// Creare dos calles. La variable auxiliar tendra el place interseccion
 		Road calle1 = new Road(0);
-		Place aux = null;
-		// 10 es el numero de casillas. 4 es el punto de interseccion
-		for(int i=0; i<10; i++) {
-			calle1.addPlace();
-			if (i==4) {
-				aux = calle1.getEnd();
-			}
-		}
+		//Reemplace el codigo por un metodo creado en la clase road
+			//Place aux = null;
+			// 10 es el numero de casillas. 4 es el punto de interseccion
+			/*for(int i=0; i<10; i++) {
+				calle1.addPlace();
+				if (i==4) {
+					aux = calle1.getEnd();
+				}
+			}*/
+		Place aux = calle1.createRoad(4,10);
 		Road calle2 = new Road(3);
-		for(int i=0; i<10; i++) {
-			if (i==4) {
-				calle2.addPlace(aux);
-				System.out.println(aux);
-			}
-			else {
-				calle2.addPlace();
-			}
-		}
-		
+		calle2.createRoad(aux, 4, 10);
+		//Reemplace el codigo por un metodo creado en la clase road
+			/*for(int i=0; i<10; i++) {
+				if (i==4) {
+					calle2.addPlace(aux);
+					System.out.println(aux);
+				}
+				else {
+					calle2.addPlace();
+				}
+			}*/
+			
 		// Creo dos carros que inicien en cada una de las calles
 		Car carro1 = new Car(0, 0, calle1.getStart());
 		System.out.println(carro1.place);
