@@ -109,4 +109,34 @@ public class Road {
         }
         
     }
+    
+    public void createRoad(Place intersection, int index, int size) {
+		for(int i=0; i<size; i++) {
+			if (i==index) {
+				this.addPlace(intersection);
+				System.out.println(intersection);
+			}
+			else {
+				this.addPlace();
+			}
+		}
+    }
+    
+    
+    public Place createRoad(int index, int size) {
+    	Place aux=null;
+		for(int i=0; i<size; i++) {
+			this.addPlace();
+			if (i==index) {
+				aux = this.getEnd();
+			}
+		}
+		return aux;
+    }
+    
+    public void createRoad(int size) {
+    	for(int i=0; i<size;i++) {
+    		this.addPlace();
+    	}
+    }
 }
