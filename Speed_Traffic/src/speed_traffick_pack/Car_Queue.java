@@ -70,6 +70,13 @@ public class Car_Queue {
         count = 0;
     }
     
+    // Funcion para generar carros de forma masiva
+    public void Generate_Cars(int n) {
+    	for(int i=0; i<n; i++) {
+    		Car car = new Car(i);
+    		this.enqueue(car);
+    	}
+    }
     
 
 }

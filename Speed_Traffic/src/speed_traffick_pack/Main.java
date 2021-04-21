@@ -32,20 +32,25 @@ public class Main {
 			}*/
 			
 		// Creo dos carros que inicien en cada una de las calles
-		Car carro1 = new Car("yellow", 0, calle1.getStart());
+		Car carro1 = new Car(0, 0, calle1.getStart());
 		System.out.println(carro1.place);
-		Car carro2 = new Car("red", 3, calle2.getStart());
+		Car carro2 = new Car(1, 3, calle2.getStart());
 		System.out.println(carro2.place);
-		
-		// Creo un semaforo: Note que interrumpe ambos carros pues sólo hay un place interseccion
-		TrafficLight semaforo = new TrafficLight(3, 1, aux, calle2);
+
+		// Creo una cola de carros
+		Car_Queue Car_queue = new Car_Queue();
+		Car_queue.enqueue(carro1);
+		Car_queue.enqueue(carro2);
+		Car_Queue Car_queue2 = new Car_Queue();
+		Car_queue2.Generate_Cars(100);
+		System.out.println(Car_queue2.dequeue().ID);
+		// Creo un semaforo
+
 		// Hare andar los carros
 		int tmax = 10;
 		int t = 0;
 		while(t<tmax) {
 			System.out.println(t);
-                        semaforo.actualizarSemaforo();
-                        System.out.println(semaforo.getLuzActual());
                         carro1.MoveCar();
 			System.out.println(carro1.place);
 			carro2.MoveCar();
