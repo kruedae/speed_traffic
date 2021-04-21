@@ -28,11 +28,14 @@ public class Main {
 		}
 		
 		// Creo dos carros que inicien en cada una de las calles
-		Car carro1 = new Car("yellow", 0, calle1.getStart());
+		Car carro1 = new Car(0, 0, calle1.getStart());
 		System.out.println(carro1.place);
-		Car carro2 = new Car("red", 3, calle2.getStart());
+		Car carro2 = new Car(1, 3, calle2.getStart());
 		System.out.println(carro2.place);
-		
+		// Creo una cola de carros
+		Car_Queue Car_queue = new Car_Queue();
+		Car_queue.enqueue(carro1);
+		Car_queue.enqueue(carro2);
 		// Creo un semaforo
 		
 		// Hare andar los carros

@@ -11,21 +11,21 @@ package speed_traffick_pack;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class Car {
-    String color;
+    int ID;
     Integer direction;
     Place place;
     public Car(){
     }
 
-    public Car(String color, Integer direction, Place place) {
-        this.color = color;
+    public Car(int id, Integer direction, Place place) {
+        this.ID = id;
         this.direction = direction;
         this.place = place;
         this.place.setBlocked(true);
     }
 
-    public Car(String color) {
-        this.color = color;
+    public Car(int id) {
+        this.ID = id;
     }
     
     public void MoveCar() {
