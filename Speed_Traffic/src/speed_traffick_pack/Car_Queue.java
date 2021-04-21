@@ -39,23 +39,14 @@ public class Car_Queue {
     
     public Car dequeue(){
         
-        if(isEmpty()){            
+        if (isEmpty()) {
             return null;
-        }else if (count > 1){
-            Car temporal = tail.car;
-            Car_Node temp = head;
-            for(int i = 0 ; temp.next.next != null ; i++){
-                temp = temp.next;
-            }
-            temp.next = null;
-            tail = temp;
+        }else{
+            Car temporal = head.car;
+            
+            head = head.next;
             count--;
-            return temporal;            
-        }
-        else{
-            Car temporal = tail.car;
-            clean();
-            return temporal;            
+            return temporal;
         }
         
     }
