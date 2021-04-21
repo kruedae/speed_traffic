@@ -44,13 +44,15 @@ public class Main {
 		Car_Queue Car_queue2 = new Car_Queue();
 		Car_queue2.Generate_Cars(100);
 		System.out.println(Car_queue2.dequeue().ID);
-		// Creo un semaforo
-
+		// Creo un semaforo: Note que interrumpe ambos carros pues sólo hay un place interseccion
+		TrafficLight semaforo = new TrafficLight(3, 1, aux, calle2);
 		// Hare andar los carros
 		int tmax = 10;
 		int t = 0;
 		while(t<tmax) {
 			System.out.println(t);
+                        semaforo.actualizarSemaforo();
+                        System.out.println(semaforo.getLuzActual());
                         carro1.MoveCar();
 			System.out.println(carro1.place);
 			carro2.MoveCar();
