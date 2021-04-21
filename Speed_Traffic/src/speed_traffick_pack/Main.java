@@ -7,7 +7,6 @@ public class Main {
 		// TODO Auto-generated method stub
 		
 		// Creare dos calles. La variable auxiliar tendra el place interseccion
-		Road calle1 = new Road(0);
 		//Reemplace el codigo por un metodo creado en la clase road
 			//Place aux = null;
 			// 10 es el numero de casillas. 4 es el punto de interseccion
@@ -17,9 +16,17 @@ public class Main {
 					aux = calle1.getEnd();
 				}
 			}*/
+		Road calle1 = new Road(0);
 		Place aux = calle1.createRoad(4,10);
 		Road calle2 = new Road(3);
 		calle2.createRoad(aux, 4, 10);
+		
+		Road calle3 = new Road(2);
+		calle3.createRoad(aux.getNorth(), 4, 10);
+		
+		Road calle4 = new Road(1);
+		calle4.createRoad(aux.north.getWest(), 3, 3);
+		calle4.createRoad(aux.getWest(), 0, 6);
 		//Reemplace el codigo por un metodo creado en la clase road
 			/*for(int i=0; i<10; i++) {
 				if (i==4) {
@@ -41,8 +48,10 @@ public class Main {
 		Car_Queue Car_queue = new Car_Queue();
 		Car_queue.enqueue(carro1);
 		Car_queue.enqueue(carro2);
+		// Creo otra cola ahora de forma masiva con la funcion nueva
 		Car_Queue Car_queue2 = new Car_Queue();
 		Car_queue2.Generate_Cars(100);
+		System.out.println(Car_queue2.dequeue().ID);
 		System.out.println(Car_queue2.dequeue().ID);
 		// Creo un semaforo: Note que interrumpe ambos carros pues sólo hay un place interseccion
 		TrafficLight semaforo = new TrafficLight(3, 1, aux, calle2);
