@@ -72,18 +72,22 @@ public class Road {
         switch(this.direction){
             case 0:
                 this.end.setNorth(p);
+                p.south = this.end;
                 this.end = p;
                 break;
             case 1:
                 this.end.setSouth(p);
+                p.north = this.end;
                 this.end = p;
                 break;
             case 2:
                 this.end.setEast(p);
+                p.west = this.end;
                 this.end = p;
                 break;
             case 3:
                 this.end.setWest(p);
+                p.east = this.end;
                 this.end = p;
                 break;
         }
@@ -114,7 +118,7 @@ public class Road {
 		for(int i=0; i<size; i++) {
 			if (i==index) {
 				this.addPlace(intersection);
-				System.out.println(intersection);
+				//System.out.println(intersection);
 			}
 			else {
 				this.addPlace();

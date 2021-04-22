@@ -15,6 +15,7 @@ public class Place {
         this.grid_y = grid_y;
     }
     // Nuevo constructor para crear places sin grids mientras no los necesitemos
+    
     public Place(boolean blocked) {
         this.blocked = blocked;
     }
@@ -79,16 +80,16 @@ public class Place {
 	public boolean FreeToMove(int a) {
 		boolean state_nextplace = true;
 		if(a == 0) {
-			state_nextplace = north.blocked;
+			state_nextplace = this.north.blocked;
 		}
 		if(a == 1) {
-			state_nextplace = south.blocked;
+			state_nextplace = this.south.blocked;
 		}
 		if(a == 2) {
-			state_nextplace = east.blocked;
+			state_nextplace = this.east.blocked;
 		}
 		if(a == 3) {
-			state_nextplace = west.blocked;
+			state_nextplace = this.west.blocked;
 		}
 		return state_nextplace;
 	}
