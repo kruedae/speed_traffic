@@ -36,7 +36,13 @@ public class Car {
     	}
     }
     
-    
-    
+    /*detecta si el carro est・en el final de la via
+    public boolean DetectEndRoad(Car car) {
+        boolean is_end = false;
+        if(car.place == Road.getEnd()) {
+            is_end = true;
+        }
+        return is_end;
+    }*/
     
 }
