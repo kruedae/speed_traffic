@@ -51,16 +51,17 @@ public class Main {
 		//System.out.println(Car_queue2.dequeue().ID);
 		
 		// Creo un semaforo: Note que interrumpe ambos carros pues sólo hay un place interseccion
-		TrafficLight semaforo = new TrafficLight(3, 1, aux, calle2);
-		
+		TrafficLight semaforo = new TrafficLight(1000,1000, aux, calle2);
+		//Runnable semaforo = new TrafficLight(1000,1000, aux, calle2);
+		//Thread sem = new Thread(semaforo);
+		//sem.start();
 		// Hacemos andar los carros
 		int tmax = 9;
 		int t = 0;
 		while(t<tmax) {
 			System.out.println(t);
-                        semaforo.actualizarSemaforo();
-                        System.out.println(semaforo.getLuzActual());
-                        carro1.MoveCar();
+            System.out.println("Luz Actual: "+((TrafficLight) semaforo).getLuzActual());
+            carro1.MoveCar();
             System.out.print("Carro:");
             System.out.println(carro1.ID);
 			System.out.println(carro1.place);
@@ -76,8 +77,15 @@ public class Main {
 			System.out.print("Carro:");
 			System.out.println(carro4.ID);
 			System.out.println(carro4.place);
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			t++;
 		}
+		semaforo.getThread().stop();
 		
 	}
 
