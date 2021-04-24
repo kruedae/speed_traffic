@@ -29,7 +29,7 @@ public class Car {
     }
     
     public void MoveCar() {
-    	if(!this.place.FreeToMove(this.direction)) {
+    	if(this.place.FreeToMove(this.direction)) {
     		this.place.setBlocked(false);
     		this.place = this.place.GetnextPlace_direction(this.direction);
     		this.place.setBlocked(true);

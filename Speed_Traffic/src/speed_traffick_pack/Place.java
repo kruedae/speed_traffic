@@ -91,7 +91,7 @@ public class Place {
 		if(a == 3) {
 			state_nextplace = this.west.blocked;
 		}
-		return state_nextplace;
+		return !state_nextplace;
 	}
     
 	public Place GetnextPlace_direction(int a) {
