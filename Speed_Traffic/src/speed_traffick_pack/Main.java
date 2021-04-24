@@ -43,13 +43,10 @@ public class Main {
          son los previos a la intersección. Esos places serán contadores.*/
         aux.south.setMeasuring(true);
         TrafficLight semaforoNorth = new TrafficLight(1000, 1000, aux.south, calle1);
-
-        aux.north.east.setMeasuring(true);
-        TrafficLight semaforoWest = new TrafficLight(1000, 1000, aux.north.east, calle2);
-
-        aux.west.west.setMeasuring(true);
-        TrafficLight semaforoEast = new TrafficLight(1000, 1000, aux.west.west, calle3);
-
+        aux.east.setMeasuring(true);
+        TrafficLight semaforoWest = new TrafficLight(1000, 1000, aux.east, calle2);
+        aux.north.west.west.setMeasuring(true);
+        TrafficLight semaforoEast = new TrafficLight(1000, 1000, aux.north.west.west, calle3);
         aux.north.west.north.setMeasuring(true);
         TrafficLight semaforoSouth = new TrafficLight(1000, 1000, aux.north.west.north, calle4);
 
@@ -62,10 +59,15 @@ public class Main {
         // Se genera un objeto aleatorio que hara a los carros moverse y encolara nuevos carros
         Aleatorio aleatorio = new Aleatorio();
         while (t < tmax) {
-            System.out.println(t);
+            System.out.println("tiempo: " + t);
             System.out.println("Luz Actual Norte: " + semaforoNorth.getLuzActual());
             System.out.println("Luz Actual West: " + semaforoWest.getLuzActual());
             aleatorio.generar(selec, carrosmov);
+            System.out.print("Medidores: ");
+            System.out.print(semaforoNorth.placeABloquear.contCarros);
+            System.out.print(semaforoWest.placeABloquear.contCarros);
+            System.out.print(semaforoEast.placeABloquear.contCarros);
+            System.out.println(semaforoSouth.placeABloquear.contCarros);
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
