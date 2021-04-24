@@ -24,59 +24,38 @@ public class Main {
 		System.out.println(aux.getNorth());
 		System.out.println(aux.north.getWest());
 		System.out.println(aux.west);
-		// Creo dos carros que inicien en cada una de las calles
-		/*Car carro1 = new Car(0, 0, calle1.getStart());
-		Car carro2 = new Car(1, 3, calle2.getStart());
-
-		// Creo una cola de carros
-		Car_Queue Car_queue = new Car_Queue();
-		Car_queue.enqueue(carro1);
-		Car_queue.enqueue(carro2);*/
 		
-		// Creo otra cola ahora de forma masiva con la funcion nueva
-		Car_Queue Car_queue2 = new Car_Queue();
-		Car_queue2.Generate_Cars(10);
-		Car carro1 = Car_queue2.dequeue();
-		Car carro2 = Car_queue2.dequeue();
-		Car carro3 = Car_queue2.dequeue();
-		Car carro4 = Car_queue2.dequeue();
-		carro1.place = calle1.getStart();
-		carro2.place = calle2.getStart();
-		carro3.place = calle3.getStart();
-		carro4.place = calle4.getStart();
-		carro1.direction = calle1.getDirection();
-		carro2.direction = calle2.getDirection();
-		carro3.direction = calle3.getDirection();
-		carro4.direction = calle4.getDirection();
-		//System.out.println(Car_queue2.dequeue().ID);
+		// Creo cuatro colas con el numero total de carros que van a entrar
+		Car_Queue cola1 = new Car_Queue();
+		cola1.Generate_Cars(10, calle1);
+		Car_Queue cola2 = new Car_Queue();
+		cola2.Generate_Cars(10, calle2);
+		Car_Queue cola3 = new Car_Queue();
+		cola3.Generate_Cars(10, calle3);
+		Car_Queue cola4 = new Car_Queue();
+		cola4.Generate_Cars(10, calle4);
+		
+		// Se crea una cola auxiliar con los carros que ya se mueven en las vias
+		Car_Queue carrosmov = new Car_Queue();
+		
+		// Se crea un vector con las 4 posibles colas (para usar en Aleatorio)
+		Car_Queue selec [] = {cola1, cola2, cola3, cola4};
 		
 		// Creo un semaforo: Note que interrumpe ambos carros pues sólo hay un place interseccion
 		TrafficLight semaforo = new TrafficLight(1000,1000, aux, calle2);
 		//Runnable semaforo = new TrafficLight(1000,1000, aux, calle2);
 		//Thread sem = new Thread(semaforo);
 		//sem.start();
+		
 		// Hacemos andar los carros
 		int tmax = 9;
 		int t = 0;
+		// Se genera un objeto aleatorio que hara a los carros moverse y encolara nuevos carros
+		Aleatorio aleatorio = new Aleatorio();
 		while(t<tmax) {
 			System.out.println(t);
             System.out.println("Luz Actual: "+((TrafficLight) semaforo).getLuzActual());
-            carro1.MoveCar();
-            System.out.print("Carro:");
-            System.out.println(carro1.ID);
-			System.out.println(carro1.place);
-			carro2.MoveCar();
-			System.out.print("Carro:");
-			System.out.println(carro2.ID);
-			System.out.println(carro2.place);
-			carro3.MoveCar();
-			System.out.print("Carro:");
-            System.out.println(carro3.ID);
-			System.out.println(carro3.place);
-			carro4.MoveCar();
-			System.out.print("Carro:");
-			System.out.println(carro4.ID);
-			System.out.println(carro4.place);
+            aleatorio.generar(selec, carrosmov);
 			try {
 				Thread.sleep(500);
 			} catch (InterruptedException e) {

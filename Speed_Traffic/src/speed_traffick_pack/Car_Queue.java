@@ -62,9 +62,9 @@ public class Car_Queue {
     }
     
     // Funcion para generar carros de forma masiva
-    public void Generate_Cars(int n) {
+    public void Generate_Cars(int n, Road calle) {
     	for(int i=0; i<n; i++) {
-    		Car car = new Car(i);
+    		Car car = new Car((calle.getDirection()+1)*100+i, calle.getDirection(), calle.getStart());
     		this.enqueue(car);
     	}
     }
