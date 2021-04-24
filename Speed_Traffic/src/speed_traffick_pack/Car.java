@@ -33,6 +33,10 @@ public class Car {
     		this.place.setBlocked(false);
     		this.place = this.place.GetnextPlace_direction(this.direction);
     		this.place.setBlocked(true);
+                                  //Aumenta contador del place si es medidor
+                                  if(this.place.isMeasuring()){
+                                                    this.place.setContCarros(this. place.getContCarros()+1);
+                                  }
     	}
     }
     

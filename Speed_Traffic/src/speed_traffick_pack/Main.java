@@ -42,7 +42,8 @@ public class Main {
 		Car_Queue selec [] = {cola1, cola2, cola3, cola4};
 		
 		// Creo un semaforo: Note que interrumpe ambos carros pues sólo hay un place interseccion
-		TrafficLight semaforo = new TrafficLight(1000,1000, aux, calle2);
+		aux.setMeasuring(true);
+                                  TrafficLight semaforo = new TrafficLight(1000,1000, aux, calle2);
 		//Runnable semaforo = new TrafficLight(1000,1000, aux, calle2);
 		//Thread sem = new Thread(semaforo);
 		//sem.start();

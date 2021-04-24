@@ -6,8 +6,8 @@ public class Place {
     Place south;
     Place east;
     Place west;
-    boolean blocked;
-    int grid_x, grid_y;
+    boolean blocked, measuring;
+    int grid_x, grid_y, contCarros;
 
     public Place(boolean blocked, int grid_x, int grid_y) {
         this.blocked = blocked;
@@ -39,6 +39,10 @@ public class Place {
     public boolean isBlocked() {
         return blocked;
     }
+    
+        public boolean isMeasuring() {
+        return measuring;
+    }
 
     public int getGrid_x() {
         return grid_x;
@@ -48,10 +52,18 @@ public class Place {
         return grid_y;
     }
 
+        public int getContCarros() {
+        return contCarros;
+    }
+        
     public void setBlocked(boolean blocked) {
         this.blocked = blocked;
     }
 
+        public void setMeasuring(boolean medidor) {
+        this.measuring = medidor;
+    }
+        
     public void setGrid_x(int grid_x) {
         this.grid_x = grid_x;
     }
@@ -76,6 +88,9 @@ public class Place {
         this.west = west;
     }
     
+    public void setContCarros(int contCarros) {
+        this.contCarros = contCarros;
+    }
     
 	public boolean FreeToMove(int a) {
 		boolean state_nextplace = true;
