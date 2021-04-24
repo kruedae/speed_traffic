@@ -97,16 +97,16 @@ public class Place {
     
 	public boolean FreeToMove(int a) {
 		boolean state_nextplace = true;
-		if(a == 0) {
+		if(a == 0 && this.north!= null) {
 			state_nextplace = this.north.blocked;
 		}
-		if(a == 1) {
+		if(a == 1 && this.south!= null) {
 			state_nextplace = this.south.blocked;
 		}
-		if(a == 2) {
+		if(a == 2 && this.east!= null) {
 			state_nextplace = this.east.blocked;
 		}
-		if(a == 3) {
+		if(a == 3 && this.south!= null) {
 			state_nextplace = this.west.blocked;
 		}
 		return !state_nextplace;

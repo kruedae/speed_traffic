@@ -10,6 +10,16 @@ package speed_traffick_pack;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class Car_Queue {
+	
+	public class Car_Node {
+	    Car car;
+	    Car_Node next;
+	    
+	    public Car_Node(Car car){
+	        this.car = car;
+	        next = null;
+	    }
+	}
 
     Car_Node head;
     Car_Node tail;
@@ -60,6 +70,8 @@ public class Car_Queue {
         tail = null;
         count = 0;
     }
+    
+    
     
     // Funcion para generar carros de forma masiva
     public void Generate_Cars(int n, Road calle) {

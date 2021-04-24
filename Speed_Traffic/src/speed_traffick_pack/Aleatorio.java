@@ -19,12 +19,17 @@ public class Aleatorio {
 		}
 		for(int i=0; i<cola.count; i++) {
 			Car uncarro = cola.dequeue();
-			uncarro.MoveCar();
+			//uncarro.MoveCar();
+			if(!uncarro.getThread().isAlive()) {
+				uncarro.getThread().start();
+			}
 			System.out.print("Carro: ");
 			System.out.print(uncarro.ID);
 			System.out.print("  lugar: ");
 			System.out.println(uncarro.place);
+			System.out.println("Timer: "+uncarro.getTimer());
 			cola.enqueue(uncarro);
+			
 		}
 		
 	}

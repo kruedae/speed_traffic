@@ -105,16 +105,20 @@ public class TrafficLight implements Runnable {
         this.placeABloquear = placeEnFrente;
         this.Direction = roadEnFrente.getDirection();
         
+        
+        this.colors[0] = durVerdeEstaDirection;
+        this.colors[1] = 1000;
+        this.colors[2] = durVerdeOtraDirection+1000;
+        
+        
         if(this.Direction > 1 ) {
-    		this.luzActual =  colors[0];
+    		this.luzActual =  0;
     		this.placeABloquear.setBlocked(false);
     	}else {
-    		this.luzActual = colors[2];
+    		this.luzActual = 2;
     		this.placeABloquear.setBlocked(true);
     	}
-        colors[0] = this.verdeDuration;
-        colors[1] = this.amarilloDuration;
-        colors[2] = this.rojoDuration;
+
         Runnable s = (Runnable) this;
         thread = new Thread(s);
         thread.start();

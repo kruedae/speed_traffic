@@ -37,7 +37,7 @@ public class Main {
         Car_Queue carrosmov = new Car_Queue();
 
         // Se crea un vector con las 4 posibles colas (para usar en Aleatorio)
-        Car_Queue selec[] = {cola1, cola2, cola3, cola4};
+        Car_Queue[] selec = {cola1, cola2, cola3, cola4};
 
         /*Son creados cuatros semáforos. Uno para cada road los places a bloquear
          son los previos a la intersección. Esos places serán contadores.*/
@@ -50,11 +50,12 @@ public class Main {
         aux.north.west.north.setMeasuring(true);
         TrafficLight semaforoSouth = new TrafficLight(1000, 1000, aux.north.west.north, calle4);
 
-		//Runnable semaforo = new TrafficLight(1000,1000, aux, calle2);
-        //Thread sem = new Thread(semaforo);
-        //sem.start();
+        System.out.println("Luz Actual Norte: " + semaforoNorth.getLuzActual());
+        System.out.println("Luz Actual West: " + semaforoWest.getLuzActual());
+        System.out.println("Luz Actual Norte: " + semaforoSouth.getLuzActual());
+        System.out.println("Luz Actual West: " + semaforoEast.getLuzActual());
         // Hacemos andar los carros
-        int tmax = 9;
+        int tmax = 30;
         int t = 0;
         // Se genera un objeto aleatorio que hara a los carros moverse y encolara nuevos carros
         Aleatorio aleatorio = new Aleatorio();
@@ -62,6 +63,8 @@ public class Main {
             System.out.println("tiempo: " + t);
             System.out.println("Luz Actual Norte: " + semaforoNorth.getLuzActual());
             System.out.println("Luz Actual West: " + semaforoWest.getLuzActual());
+            System.out.println("Luz Actual Norte: " + semaforoSouth.getLuzActual());
+            System.out.println("Luz Actual West: " + semaforoEast.getLuzActual());
             aleatorio.generar(selec, carrosmov);
             System.out.print("Medidores: ");
             System.out.print(semaforoNorth.placeABloquear.contCarros);
