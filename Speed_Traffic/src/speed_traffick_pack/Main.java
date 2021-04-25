@@ -8,25 +8,26 @@ public class Main {
         Road calle1 = new Road(0);
         Place aux = calle1.createRoad(4, 10);
         Road calle2 = new Road(3);
-        calle2.createRoad(aux, 4, 10);
+        calle2.createRoad(aux.getNorth(), 4, 10);
 
         Road calle3 = new Road(2);
-        calle3.createRoad(aux.getNorth(), 4, 10);
+        calle3.createRoad(aux, 5, 10);
 
         Road calle4 = new Road(1);
-        calle4.createRoad(aux.north.getWest(), 3, 4);
-        calle4.createRoad(aux.getWest(), 0, 6);
+        calle4.createRoad(aux.getNorth().getWest(), 4, 5);
+        calle4.createRoad(aux.getWest(), 0, 5);
 
         System.out.println("Intersecciones: ");
         System.out.println(aux);
         System.out.println(aux.getNorth());
-        System.out.println(aux.north.getWest());
-        System.out.println(aux.west);
-        System.out.println("AUXI: ");
-        System.out.println(aux.getNorth());
+        System.out.println(aux.getNorth().getWest());
+        System.out.println(aux.getWest());
+        System.out.println("Medidores ");
         System.out.println(aux.getSouth());
-        System.out.println(aux.getEast());
-        System.out.println(aux.west);
+        System.out.println(aux.getNorth().getEast());
+        System.out.println(aux.getWest().getWest());
+        System.out.println(aux.getNorth().getWest().getNorth());
+  
         // Creo cuatro colas con el numero total de carros que van a entrar
         int N = 2;
         
@@ -49,16 +50,23 @@ public class Main {
         // Se crea un vector con las 4 posibles colas (para usar en Aleatorio)
         Car_Queue[] selec = {cola1, cola2, cola3, cola4};
 
-        /*Son creados cuatros semáforos. Uno para cada road los places a bloquear
-         son los previos a la intersección. Esos places serán contadores.*/
-        aux.south.setMeasuring(true);
-        TrafficLight semaforoNorth = new TrafficLight(1000, 1000, aux.south, calle1);
-        aux.east.setMeasuring(true);
-        TrafficLight semaforoWest = new TrafficLight(1000, 1000, aux.east, calle2);
-        aux.north.west.west.setMeasuring(true);
-        TrafficLight semaforoEast = new TrafficLight(1000, 1000, aux.north.west.west, calle3);
-        aux.north.west.north.setMeasuring(true);
-        TrafficLight semaforoSouth = new TrafficLight(1000, 1000, aux.north.west.north, calle4);
+        /*Son creados cuatros semáforos. Uno para cada road, los places a bloquear
+         son los previos a la intersección. Esos places también serán contadores.*/
+        aux.getSouth().setMeasuring(true);
+        aux.getSouth().setContCarros(0);
+        TrafficLight semaforoNorth = new TrafficLight(1000, 1000, aux.getSouth(), calle1);
+        
+        aux.getNorth().getEast().setMeasuring(true);
+        aux.getNorth().getEast().setContCarros(0);
+        TrafficLight semaforoWest = new TrafficLight(1000, 1000, aux.getNorth().getEast(), calle2);
+        
+        aux.getWest().getWest().setMeasuring(true);
+        aux.getWest().getWest().setContCarros(0);
+        TrafficLight semaforoEast = new TrafficLight(1000, 1000, aux.getWest().getWest(), calle3);
+        
+        aux.getNorth().getWest().getNorth().setMeasuring(true);
+        aux.getNorth().getWest().getNorth().setContCarros(0);
+        TrafficLight semaforoSouth = new TrafficLight(1000, 1000, aux.getNorth().getWest().getNorth(), calle4);
 
         System.out.println("Luz Actual Norte: " + semaforoNorth.getLuzActual());
         System.out.println("Luz Actual West: " + semaforoWest.getLuzActual());
@@ -69,7 +77,7 @@ public class Main {
         int t = 0;
         // Se genera un objeto aleatorio que hara a los carros moverse y encolara nuevos carros
         Aleatorio aleatorio = new Aleatorio();
-        while (!aleatorio.Terminar) {
+        while (t<tmax) {
             System.out.println("tiempo: " + t);
             System.out.println("Luz Actual Norte: " + semaforoNorth.getLuzActual());
             System.out.println("Luz Actual West: " + semaforoWest.getLuzActual());

@@ -62,9 +62,6 @@ public class Place {
 
         public void setMeasuring(boolean medidor) {
         this.measuring = medidor;
-        if(medidor){
-            this.contCarros=0;
-        }
     }
         
     public void setGrid_x(int grid_x) {
