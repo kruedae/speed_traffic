@@ -22,17 +22,27 @@ public class Main {
         System.out.println(aux.getNorth());
         System.out.println(aux.north.getWest());
         System.out.println(aux.west);
-
+        System.out.println("AUXI: ");
+        System.out.println(aux.getNorth());
+        System.out.println(aux.getSouth());
+        System.out.println(aux.getEast());
+        System.out.println(aux.west);
         // Creo cuatro colas con el numero total de carros que van a entrar
+        int N = 2;
+        
+        // Pedir al usuario un N 
+        
         Car_Queue cola1 = new Car_Queue();
-        cola1.Generate_Cars(10, calle1);
+        cola1.Generate_Cars(N, calle1);
         Car_Queue cola2 = new Car_Queue();
-        cola2.Generate_Cars(10, calle2);
+        cola2.Generate_Cars(N, calle2);
         Car_Queue cola3 = new Car_Queue();
-        cola3.Generate_Cars(10, calle3);
+        cola3.Generate_Cars(N, calle3);
         Car_Queue cola4 = new Car_Queue();
-        cola4.Generate_Cars(10, calle4);
-
+        cola4.Generate_Cars(N, calle4);
+        
+        // PEDIR TIEMPO SEMAFOROS
+        
         // Se crea una cola auxiliar con los carros que ya se mueven en las vias
         Car_Queue carrosmov = new Car_Queue();
 
@@ -59,7 +69,7 @@ public class Main {
         int t = 0;
         // Se genera un objeto aleatorio que hara a los carros moverse y encolara nuevos carros
         Aleatorio aleatorio = new Aleatorio();
-        while (t < tmax) {
+        while (!aleatorio.Terminar) {
             System.out.println("tiempo: " + t);
             System.out.println("Luz Actual Norte: " + semaforoNorth.getLuzActual());
             System.out.println("Luz Actual West: " + semaforoWest.getLuzActual());
