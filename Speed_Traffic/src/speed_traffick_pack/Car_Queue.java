@@ -28,7 +28,7 @@ public class Car_Queue {
     public Car_Queue() {
         head = null;
         tail = null;
-        count = 0;
+        this.count = 0;
     }
 
     public boolean isEmpty() {
@@ -44,7 +44,7 @@ public class Car_Queue {
             tail.next = temporal;
             tail = temporal;
         }
-        count++;        
+        this.count++;        
     }
     
     public Car dequeue(){
@@ -55,7 +55,7 @@ public class Car_Queue {
             Car temporal = head.car;
             
             head = head.next;
-            count--;
+            this.count--;
             return temporal;
         }
         

@@ -29,7 +29,7 @@ public class Main {
         System.out.println(aux.getNorth().getWest().getNorth());
   
         // Creo cuatro colas con el numero total de carros que van a entrar
-        int N = 2;
+        int N = 1;
         
         // Pedir al usuario un N 
         
@@ -58,6 +58,8 @@ public class Main {
         
         aux.getNorth().getEast().setMeasuring(true);
         aux.getNorth().getEast().setContCarros(0);
+        aux.getWest().getWest().setMeasuring(true);
+        aux.getWest().getWest().setContCarros(0);
         TrafficLight semaforoWest = new TrafficLight(1000, 1000, aux.getNorth().getEast(), calle2);
         
         aux.getWest().getWest().setMeasuring(true);
@@ -73,7 +75,7 @@ public class Main {
         System.out.println("Luz Actual Norte: " + semaforoSouth.getLuzActual());
         System.out.println("Luz Actual West: " + semaforoEast.getLuzActual());
         // Hacemos andar los carros
-        int tmax = 30;
+        int tmax = 100;
         int t = 0;
         // Se genera un objeto aleatorio que hara a los carros moverse y encolara nuevos carros
         Aleatorio aleatorio = new Aleatorio();

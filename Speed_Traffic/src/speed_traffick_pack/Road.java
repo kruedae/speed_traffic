@@ -54,21 +54,25 @@ public class Road {
                 this.end.setNorth(p);
                 p.south = this.end;
                 this.end = p;
+                this.end.north = null;
                 break;
             case 1:
                 this.end.setSouth(p);
                 p.north = this.end;
                 this.end = p;
+                this.end.south = null;
                 break;
             case 2:
                 this.end.setEast(p);
                 p.west = this.end;
                 this.end = p;
+                this.end.east = null;
                 break;
             case 3:
                 this.end.setWest(p);
                 p.east = this.end;
                 this.end = p;
+                this.end.west = null;
                 break;
         }
     }
@@ -78,21 +82,25 @@ public class Road {
                 this.end.setNorth(p);
                 p.south = this.end;
                 this.end = p;
+                this.end.north = null;
                 break;
             case 1:
                 this.end.setSouth(p);
                 p.north = this.end;
                 this.end = p;
+                this.end.south = null;
                 break;
             case 2:
                 this.end.setEast(p);
                 p.west = this.end;
                 this.end = p;
+                this.end.east = null;
                 break;
             case 3:
                 this.end.setWest(p);
                 p.east = this.end;
                 this.end = p;
+                this.end.west = null;
                 break;
         }
     }
