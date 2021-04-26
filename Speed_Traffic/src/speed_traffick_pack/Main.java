@@ -56,15 +56,15 @@ public class Main {
         aux.getSouth().setContCarros(0);
         TrafficLight semaforoNorth = new TrafficLight(1000, 1000, aux.getSouth(), calle1);
         
+        
         aux.getNorth().getEast().setMeasuring(true);
         aux.getNorth().getEast().setContCarros(0);
-        aux.getWest().getWest().setMeasuring(true);
-        aux.getWest().getWest().setContCarros(0);
         TrafficLight semaforoWest = new TrafficLight(1000, 1000, aux.getNorth().getEast(), calle2);
+        
         
         aux.getWest().getWest().setMeasuring(true);
         aux.getWest().getWest().setContCarros(0);
-        TrafficLight semaforoEast = new TrafficLight(1000, 1000, aux.getWest().getWest(), calle3);
+        TrafficLight semaforoEast = new TrafficLight(1000, 1000,aux.getWest().getWest() , calle3);
         
         aux.getNorth().getWest().getNorth().setMeasuring(true);
         aux.getNorth().getWest().getNorth().setContCarros(0);
