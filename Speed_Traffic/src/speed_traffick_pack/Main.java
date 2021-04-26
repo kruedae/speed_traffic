@@ -1,9 +1,9 @@
 package speed_traffick_pack;
+import java.util.*;
+
 public class Main {
-
-    public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+    
+    public static void proceso(int n, int tiempo){
         // Entramado vial:
         Road calle1 = new Road(0);
         Place aux = calle1.createRoad(4, 10);
@@ -29,7 +29,7 @@ public class Main {
         System.out.println(aux.getNorth().getWest().getNorth());
   
         // Creo cuatro colas con el numero total de carros que van a entrar
-        int N = 1;
+        int N = n;
         
         // Pedir al usuario un N 
         
@@ -52,22 +52,23 @@ public class Main {
 
         /*Son creados cuatros semáforos. Uno para cada road, los places a bloquear
          son los previos a la intersección. Esos places también serán contadores.*/
+        int T = tiempo;
         aux.getSouth().setMeasuring(true);
         aux.getSouth().setContCarros(0);
-        TrafficLight semaforoNorth = new TrafficLight(1000, 1000, aux.getSouth(), calle1);
+        TrafficLight semaforoNorth = new TrafficLight(T, T, aux.getSouth(), calle1);
         
         aux.getNorth().getEast().setMeasuring(true);
         aux.getNorth().getEast().setContCarros(0);
-        TrafficLight semaforoWest = new TrafficLight(1000, 1000, aux.getNorth().getEast(), calle2);
+        TrafficLight semaforoWest = new TrafficLight(T, T, aux.getNorth().getEast(), calle2);
         
         
         aux.getWest().getWest().setMeasuring(true);
         aux.getWest().getWest().setContCarros(0);
-        TrafficLight semaforoEast = new TrafficLight(1000, 1000,aux.getWest().getWest() , calle3);
+        TrafficLight semaforoEast = new TrafficLight(T, T,aux.getWest().getWest() , calle3);
         
         aux.getNorth().getWest().getNorth().setMeasuring(true);
         aux.getNorth().getWest().getNorth().setContCarros(0);
-        TrafficLight semaforoSouth = new TrafficLight(1000, 1000, aux.getNorth().getWest().getNorth(), calle4);
+        TrafficLight semaforoSouth = new TrafficLight(T, T, aux.getNorth().getWest().getNorth(), calle4);
 
         System.out.println("Luz Actual Norte: " + semaforoNorth.getLuzActual());
         System.out.println("Luz Actual West: " + semaforoWest.getLuzActual());
@@ -104,5 +105,16 @@ public class Main {
         semaforoSouth.getThread().stop();
 
     }
-
+    
+    public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Coloque la cantidad de carros que van a entrar por cola.");
+        int n = scan.nextInt();
+        System.out.println("Coloque el tiempo de los semáforos en milisegundos.");
+        int tiempo = scan.nextInt();
+        
+        proceso(n,tiempo);
+    }
 }

@@ -42,7 +42,7 @@ public class Aleatorio {
 				}
 			cola.enqueue(uncarro);
 			System.out.println(cola.count);
-			}
+			} 
 
 		}
 		
