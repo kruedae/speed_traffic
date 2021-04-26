@@ -29,11 +29,7 @@ public class Main {
         System.out.println(aux.getNorth().getWest().getNorth());
   
         // Creo cuatro colas con el numero total de carros que van a entrar
-<<<<<<< HEAD
         int N = 1;
-=======
-        int N = 2;
->>>>>>> branch 'master' of https://github.com/kruedae/speed_traffic.git
         
         // Pedir al usuario un N 
         
@@ -59,26 +55,15 @@ public class Main {
         aux.getSouth().setMeasuring(true);
         aux.getSouth().setContCarros(0);
         TrafficLight semaforoNorth = new TrafficLight(1000, 1000, aux.getSouth(), calle1);
-<<<<<<< HEAD
-        
-=======
->>>>>>> branch 'master' of https://github.com/kruedae/speed_traffic.git
         
         aux.getNorth().getEast().setMeasuring(true);
         aux.getNorth().getEast().setContCarros(0);
         TrafficLight semaforoWest = new TrafficLight(1000, 1000, aux.getNorth().getEast(), calle2);
-<<<<<<< HEAD
         
-=======
->>>>>>> branch 'master' of https://github.com/kruedae/speed_traffic.git
         
         aux.getWest().getWest().setMeasuring(true);
         aux.getWest().getWest().setContCarros(0);
-<<<<<<< HEAD
         TrafficLight semaforoEast = new TrafficLight(1000, 1000,aux.getWest().getWest() , calle3);
-=======
-        TrafficLight semaforoEast = new TrafficLight(1000, 1000, aux.getWest().getWest(), calle3);
->>>>>>> branch 'master' of https://github.com/kruedae/speed_traffic.git
         
         aux.getNorth().getWest().getNorth().setMeasuring(true);
         aux.getNorth().getWest().getNorth().setContCarros(0);

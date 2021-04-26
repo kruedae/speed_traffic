@@ -41,10 +41,7 @@ public class Aleatorio {
 				uncarro.getThread().start();
 				}
 			cola.enqueue(uncarro);
-<<<<<<< HEAD
-=======
 			System.out.println(cola.count);
->>>>>>> branch 'master' of https://github.com/kruedae/speed_traffic.git
 			}
 
 		}
