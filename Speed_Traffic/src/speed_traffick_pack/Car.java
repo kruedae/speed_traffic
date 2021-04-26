@@ -15,8 +15,9 @@ public class Car implements Runnable{
     int direction;
     Place place;
     int timer;
-    int speed = 1; //int places per second
+    int speed = 2; //int places per second
 	Thread t;
+	
     
     public Car(){
     	Runnable s =  (Runnable) this;
@@ -39,14 +40,17 @@ public class Car implements Runnable{
     }
     
     
+    
+    
     public void run() {
     	try {
 	    	while(!Thread.currentThread().isInterrupted()) {
 	    		if(this.place.GetnextPlace_direction(this.direction)!=null) {
 		    		if(this.place.FreeToMove(this.direction)) {
-		        		this.place.setBlocked(false);
-		        		this.place = this.place.GetnextPlace_direction(this.direction);
-		        		this.place.setBlocked(true);
+		    			Place lugar = this.place;
+    					this.place = this.place.GetnextPlace_direction(this.direction);
+    					this.place.setBlocked(true);
+    					lugar.blocked = false;
 		    	        //Aumenta contador del place si es medidor
 		    	        if(this.place.isMeasuring()){
 		    	        	this.place.setContCarros(this. place.getContCarros()+1);
@@ -56,12 +60,18 @@ public class Car implements Runnable{
 	    				this.timer+=time;
 		        	}
 	    		}else {
-	    			this.place.setBlocked(false);
+	    			Place lugar = this.place;
 	    			this.place = this.place.GetnextPlace_direction(this.direction);
+	    			lugar.setBlocked(false);
+
 	    			this.getThread().stop();
+	    			
 	    		}
 	    		Thread.sleep(1);
 	    		this.timer+=1;
+	    		if(this.ID>=400) {
+	    			System.out.println("Timer: "+this.getTimer() );
+	    		}
 	    	}
 		}catch(Exception e) {
 			System.out.print("Error1: "+e);

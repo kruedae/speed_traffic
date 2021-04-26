@@ -3,6 +3,7 @@ import java.util.Random;
 
 public class Aleatorio {
 	boolean Terminar = false;
+	Float[] tiempos;
 	public Car generar(Car_Queue[] vec, Car_Queue cola) {
 		//Random rand = new Random();
 		// De cada una de las 4 colas de carros 'vec[i]' que podrian entrar a cada respectiva calle,
@@ -37,6 +38,7 @@ public class Aleatorio {
 					cola.enqueue(carro);
 				}
 				System.out.println("Cuenta: "+cola.count);
+				
 			}
 		}
 
@@ -45,12 +47,19 @@ public class Aleatorio {
 		Car lastCar=null;
 		while(cola.count !=0){
 			Car uncarro = cola.dequeue();
+			//uncarro.correr(tiempos);
 			uncarro.getThread().start();
 			System.out.println(cola.count);
 			if(cola.count==1) {
 				lastCar = uncarro;
 			}
 			System.out.println("Cuenta: "+cola.count);
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return lastCar;
 

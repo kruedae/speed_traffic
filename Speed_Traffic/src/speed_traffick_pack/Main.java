@@ -14,8 +14,9 @@ public class Main {
         calle3.createRoad(aux, 5, 10);
 
         Road calle4 = new Road(1);
-        calle4.createRoad(aux.getNorth().getWest(), 4, 5);
-        calle4.createRoad(aux.getWest(), 0, 5);
+        calle4.createRoad(aux.getNorth().getWest(), aux.getWest(), 4,10);
+        //calle4.createRoad(aux.getNorth().getWest(), 4, 5);
+        //calle4.createRoad(aux.getWest(), 0, 5);
 
         System.out.println("Intersecciones: ");
         System.out.println(aux);
@@ -83,6 +84,10 @@ public class Main {
         
         Car lastCar = aleatorio.generar(selec, carrosmov);
         while (flag) {
+        	System.out.println(aux.getWest().getWest().blocked);
+        	System.out.println(aux.getWest().blocked);
+        	System.out.println(aux.getWest().getEast().blocked);
+        	
             System.out.println("tiempo: " + t);
             System.out.println("Luz Actual Norte: " + semaforoNorth.getLuzActual());
             System.out.println("Luz Actual West: " + semaforoWest.getLuzActual());
@@ -91,7 +96,7 @@ public class Main {
           
             //aleatorio.generar(selec, carrosmov);
             
-            System.out.println("ultimo Carro"+lastCar);
+            //System.out.println("ultimo Carro"+lastCar);
             if(lastCar!=null && lastCar.place == null) {
 				flag = false;
 			}
@@ -107,6 +112,7 @@ public class Main {
                 e.printStackTrace();
             }
             t++;
+            
         }
         semaforoNorth.getThread().stop();
         semaforoWest.getThread().stop();
@@ -121,7 +127,7 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         System.out.println("Coloque la cantidad de carros que van a entrar por cola.");
         int n = scan.nextInt();
-        System.out.println("Coloque el tiempo de los semáforos en milisegundos.");
+        System.out.println("Coloque el tiempo de los semaforos en milisegundos.");
         int tiempo = scan.nextInt();
         
         proceso(n,tiempo);
