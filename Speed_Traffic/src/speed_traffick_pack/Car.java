@@ -42,19 +42,24 @@ public class Car implements Runnable{
     public void run() {
     	try {
 	    	while(!Thread.currentThread().isInterrupted()) {
-	    		if(this.place.FreeToMove(this.direction)) {
-	        		this.place.setBlocked(false);
-	        		this.place = this.place.GetnextPlace_direction(this.direction);
-	        		this.place.setBlocked(true);
-	    	        //Aumenta contador del place si es medidor
-	    	        if(this.place.isMeasuring()){
-	    	        	this.place.setContCarros(this. place.getContCarros()+1);
-	    	        }
-	
-    	        	int time = 1000/this.speed;
-    				Thread.sleep(time);
-    				this.timer+=time;
-	        	}
+	    		if(this.place.GetnextPlace_direction(this.direction)!=null) {
+		    		if(this.place.FreeToMove(this.direction)) {
+		        		this.place.setBlocked(false);
+		        		this.place = this.place.GetnextPlace_direction(this.direction);
+		        		this.place.setBlocked(true);
+		    	        //Aumenta contador del place si es medidor
+		    	        if(this.place.isMeasuring()){
+		    	        	this.place.setContCarros(this. place.getContCarros()+1);
+		    	        }
+	    	        	int time = 1000/this.speed;
+	    				Thread.sleep(time);
+	    				this.timer+=time;
+		        	}
+	    		}else {
+	    			this.place.setBlocked(false);
+	    			this.place = this.place.GetnextPlace_direction(this.direction);
+	    			this.getThread().stop();
+	    		}
 	    		Thread.sleep(1);
 	    		this.timer+=1;
 	    	}

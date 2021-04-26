@@ -79,17 +79,26 @@ public class Main {
         int t = 0;
         // Se genera un objeto aleatorio que hara a los carros moverse y encolara nuevos carros
         Aleatorio aleatorio = new Aleatorio();
-        while (t<tmax) {
+        boolean flag = true;
+        
+        Car lastCar = aleatorio.generar(selec, carrosmov);
+        while (flag) {
             System.out.println("tiempo: " + t);
             System.out.println("Luz Actual Norte: " + semaforoNorth.getLuzActual());
             System.out.println("Luz Actual West: " + semaforoWest.getLuzActual());
             System.out.println("Luz Actual Norte: " + semaforoSouth.getLuzActual());
             System.out.println("Luz Actual West: " + semaforoEast.getLuzActual());
-            aleatorio.generar(selec, carrosmov);
+          
+            //aleatorio.generar(selec, carrosmov);
+            
+            System.out.println("ultimo Carro"+lastCar);
+            if(lastCar!=null && lastCar.place == null) {
+				flag = false;
+			}
             System.out.print("Medidores: ");
-            System.out.print(semaforoNorth.placeABloquear.contCarros);
-            System.out.print(semaforoWest.placeABloquear.contCarros);
-            System.out.print(semaforoEast.placeABloquear.contCarros);
+            System.out.print(semaforoNorth.placeABloquear.contCarros+", ");
+            System.out.print(semaforoWest.placeABloquear.contCarros+", ");
+            System.out.print(semaforoEast.placeABloquear.contCarros+", ");
             System.out.println(semaforoSouth.placeABloquear.contCarros);
             try {
                 Thread.sleep(500);

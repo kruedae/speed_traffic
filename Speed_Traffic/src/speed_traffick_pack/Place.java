@@ -103,7 +103,7 @@ public class Place {
 		if(a == 2 && this.east!= null) {
 			state_nextplace = this.east.blocked;
 		}
-		if(a == 3 && this.south!= null) {
+		if(a == 3 && this.west!= null) {
 			state_nextplace = this.west.blocked;
 		}
 		return !state_nextplace;
