@@ -3,7 +3,8 @@ import java.util.Random;
 
 public class Aleatorio {
 	boolean Terminar = false;
-	public void generar(Car_Queue[] vec, Car_Queue cola) {
+	public void generar(Car_Queue[] vec, Car_Queue cola, int N) {
+            //float[] VectorTimer = new float[N];
 		Random rand = new Random();
 		// De cada una de las 4 colas de carros 'vec[i]' que podrian entrar a cada respectiva calle,
 		// con probabilidad p se tomara un carro y se pondra en la cola de carros en movimiento 'cola'
@@ -29,6 +30,7 @@ public class Aleatorio {
 			}
 		}
 		for(int i=0; i<cola.count; i++) {
+                        int b = 0;
 			Car uncarro = cola.dequeue();
 			// REVISAR SI ES NULO Y PONERLO EN UN VECTOR
 			//uncarro.MoveCar();
@@ -39,7 +41,10 @@ public class Aleatorio {
 				}
 			cola.enqueue(uncarro);
 			System.out.println(cola.count);
-			}
+			} /*else {
+                            VectorTimer[b] = uncarro.getTimer();
+                            b++;
+                        }*/
 
 		}
 		

@@ -84,7 +84,7 @@ public class Main {
             System.out.println("Luz Actual West: " + semaforoWest.getLuzActual());
             System.out.println("Luz Actual Norte: " + semaforoSouth.getLuzActual());
             System.out.println("Luz Actual West: " + semaforoEast.getLuzActual());
-            aleatorio.generar(selec, carrosmov);
+            aleatorio.generar(selec, carrosmov, N);
             System.out.print("Medidores: ");
             System.out.print(semaforoNorth.placeABloquear.contCarros);
             System.out.print(semaforoWest.placeABloquear.contCarros);
