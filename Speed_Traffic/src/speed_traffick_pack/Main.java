@@ -10,6 +10,7 @@ import java.util.*;
 public class Main {
     
     public static void proceso(int n, int tiempo){
+    	long startTime = System.currentTimeMillis();
         // Entramado vial:
         Road calle1 = new Road(0);
         Place aux = calle1.createRoad(4, 10);
@@ -94,7 +95,7 @@ public class Main {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            for(int i = 0; i<50;i++) {
+            for(int i = 0; i<15;i++) {
             	System.out.println();
             }
         }
@@ -109,17 +110,20 @@ public class Main {
         	i++;
         }
         
+        float suma = 0;
         FileWriter fichero = null;
         PrintWriter pw = null;
         try
         {
-            fichero = new FileWriter("prueba.csv");
+            fichero = new FileWriter("timer"+vecTiempos.length+".csv");
             pw = new PrintWriter(fichero);
 
             for(int j=0;j<vecTiempos.length;j++) {
             	pw.print(vecTiempos[j]+",");
+            	suma += vecTiempos[j];
             }
-            System.out.print("El archivo de texto se ha guardado");
+            System.out.println("El tiempo promedio que tardas los carros en las vías es de: "+suma/vecTiempos.length );
+            System.out.println("El archivo de texto se ha guardado con nombre timer"+vecTiempos.length+".csv");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -132,6 +136,8 @@ public class Main {
               e2.printStackTrace();
            }
         }
+        startTime -= System.currentTimeMillis();
+        System.out.println("Tiempo transcurrido: "+(-1*startTime)+"ms");
     }        
     
     public static void main(String[] args) {

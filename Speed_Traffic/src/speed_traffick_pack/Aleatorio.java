@@ -20,8 +20,8 @@ public class Aleatorio {
 			}
 		}
 
-		
-		
+		System.out.println();
+		System.out.println("Se Están generando los carros, por favor espere unos segundos...");
 		Car lastCar=null;
 		while(cola.count !=0){
 			Car uncarro = cola.dequeue();
