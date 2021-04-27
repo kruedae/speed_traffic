@@ -1,4 +1,10 @@
 package speed_traffick_pack;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 
 public class Main {
@@ -15,8 +21,6 @@ public class Main {
 
         Road calle4 = new Road(1);
         calle4.createRoad(aux.getNorth().getWest(), aux.getWest(), 4,10);
-        //calle4.createRoad(aux.getNorth().getWest(), 4, 5);
-        //calle4.createRoad(aux.getWest(), 0, 5);
 
         System.out.println("Intersecciones: ");
         System.out.println(aux);
@@ -74,7 +78,7 @@ public class Main {
         System.out.println("Luz Actual Norte: " + semaforoNorth.getLuzActual());
         System.out.println("Luz Actual West: " + semaforoWest.getLuzActual());
         System.out.println("Luz Actual Norte: " + semaforoSouth.getLuzActual());
-        System.out.println("Luz Actual West: " + semaforoEast.getLuzActual());
+        System.out.println("Luz Actual East: " + semaforoEast.getLuzActual());
         // Hacemos andar los carros
         int tmax = 100;
         int t = 0;
@@ -84,19 +88,12 @@ public class Main {
         
         Car lastCar = aleatorio.generar(selec, carrosmov);
         while (flag) {
-        	System.out.println(aux.getWest().getWest().blocked);
-        	System.out.println(aux.getWest().blocked);
-        	System.out.println(aux.getWest().getEast().blocked);
-        	
-            System.out.println("tiempo: " + t);
+            System.out.println("tiempo: " + t/2);
             System.out.println("Luz Actual Norte: " + semaforoNorth.getLuzActual());
             System.out.println("Luz Actual West: " + semaforoWest.getLuzActual());
             System.out.println("Luz Actual Norte: " + semaforoSouth.getLuzActual());
-            System.out.println("Luz Actual West: " + semaforoEast.getLuzActual());
+            System.out.println("Luz Actual East: " + semaforoEast.getLuzActual());
           
-            //aleatorio.generar(selec, carrosmov);
-            
-            //System.out.println("ultimo Carro"+lastCar);
             if(lastCar!=null && lastCar.place == null) {
 				flag = false;
 			}
@@ -112,14 +109,43 @@ public class Main {
                 e.printStackTrace();
             }
             t++;
-            
         }
         semaforoNorth.getThread().stop();
         semaforoWest.getThread().stop();
         semaforoEast.getThread().stop();
         semaforoSouth.getThread().stop();
+        Float[] vecTiempos =  new Float[4*N];
+        int i= 0;
+        System.out.println(aleatorio.carTiempos.size());
+        while(aleatorio.carTiempos.count != 0) {
+        	vecTiempos[i] = aleatorio.carTiempos.dequeue().getTimer();
+        	i++;
+        }
+        
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        try
+        {
+            fichero = new FileWriter("prueba.csv");
+            pw = new PrintWriter(fichero);
 
-    }
+            for(int j=0;j<vecTiempos.length;j++) {
+            	pw.print(vecTiempos[j]+",");
+            }
+            System.out.print("El archivo de texto se ha guardado");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+           try {
+           // Nuevamente aprovechamos el finally para 
+           // asegurarnos que se cierra el fichero.
+           if (null != fichero)
+              fichero.close();
+           } catch (Exception e2) {
+              e2.printStackTrace();
+           }
+        }
+    }        
     
     public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -129,6 +155,7 @@ public class Main {
         int n = scan.nextInt();
         System.out.println("Coloque el tiempo de los semaforos en milisegundos.");
         int tiempo = scan.nextInt();
+        
         
         proceso(n,tiempo);
     }

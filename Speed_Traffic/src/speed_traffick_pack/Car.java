@@ -63,15 +63,11 @@ public class Car implements Runnable{
 	    			Place lugar = this.place;
 	    			this.place = this.place.GetnextPlace_direction(this.direction);
 	    			lugar.setBlocked(false);
-
 	    			this.getThread().stop();
 	    			
 	    		}
 	    		Thread.sleep(1);
 	    		this.timer+=1;
-	    		if(this.ID>=400) {
-	    			System.out.println("Timer: "+this.getTimer() );
-	    		}
 	    	}
 		}catch(Exception e) {
 			System.out.print("Error1: "+e);
@@ -113,15 +109,5 @@ public class Car implements Runnable{
 	        	this.place.setContCarros(this. place.getContCarros()+1);
 	        }
     	}
-    }
-    
-    /*detecta si el carro est・en el final de la via
-    public boolean DetectEndRoad(Car car) {
-        boolean is_end = false;
-        if(car.place == Road.getEnd()) {
-            is_end = true;
-        }
-        return is_end;
-    }*/
-    
+    }  
 }

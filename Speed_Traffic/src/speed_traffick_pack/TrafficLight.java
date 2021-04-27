@@ -142,40 +142,4 @@ public class TrafficLight implements Runnable {
 			}
     	}
     }
-    
-    //Metodo
-    /*public void actualizarSemaforo() {
-        //Actualiza la luz (Por el momento las horizontales empezaran en verde y las verticales en rojo)
-        if (this.Direction == 2 || this.Direction == 3) {
-            if (timer == ciclo * this.cicloDuration) {
-                this.luzActual = "Verde";
-                //Desbloquea el place 
-                placeABloquear.setBlocked(false);
-            } else if (timer == this.verdeDuration + ciclo * this.cicloDuration) {
-                this.luzActual = "Amarilla";
-                //Bloquea el place 
-                placeABloquear.setBlocked(true);
-            } else if (timer == this.verdeDuration + this.amarilloDuration + ciclo * this.cicloDuration) {
-                this.luzActual = "Roja";
-            }
-        } else {//es road vertical
-            if (timer == ciclo * this.cicloDuration) {
-                this.luzActual = "Roja";
-            } else if (timer == this.rojoDuration + ciclo * this.cicloDuration) {
-                this.luzActual = "Verde";
-                //Desbloquea el place 
-                placeABloquear.setBlocked(false);
-            } else if (timer == this.rojoDuration + this.verdeDuration + ciclo * this.cicloDuration) {
-                this.luzActual = "Amarilla";
-                //Bloquea el place 
-                placeABloquear.setBlocked(true);
-            }
-        }
-
-        //Avanza timer y ciclo 
-        timer++;
-        if ((timer) % cicloDuration == 0 && timer > 0) {
-            ciclo++;
-        }
-    }*/
 }
