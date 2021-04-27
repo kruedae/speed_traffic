@@ -21,17 +21,6 @@ public class Main {
 
         Road calle4 = new Road(1);
         calle4.createRoad(aux.getNorth().getWest(), aux.getWest(), 4,10);
-
-        System.out.println("Intersecciones: ");
-        System.out.println(aux);
-        System.out.println(aux.getNorth());
-        System.out.println(aux.getNorth().getWest());
-        System.out.println(aux.getWest());
-        System.out.println("Medidores ");
-        System.out.println(aux.getSouth());
-        System.out.println(aux.getNorth().getEast());
-        System.out.println(aux.getWest().getWest());
-        System.out.println(aux.getNorth().getWest().getNorth());
   
         // Creo cuatro colas con el numero total de carros que van a entrar
         int N = n;
@@ -80,15 +69,12 @@ public class Main {
         System.out.println("Luz Actual Norte: " + semaforoSouth.getLuzActual());
         System.out.println("Luz Actual East: " + semaforoEast.getLuzActual());
         // Hacemos andar los carros
-        int tmax = 100;
-        int t = 0;
         // Se genera un objeto aleatorio que hara a los carros moverse y encolara nuevos carros
         Aleatorio aleatorio = new Aleatorio();
         boolean flag = true;
         
         Car lastCar = aleatorio.generar(selec, carrosmov);
         while (flag) {
-            System.out.println("tiempo: " + t/2);
             System.out.println("Luz Actual Norte: " + semaforoNorth.getLuzActual());
             System.out.println("Luz Actual West: " + semaforoWest.getLuzActual());
             System.out.println("Luz Actual Norte: " + semaforoSouth.getLuzActual());
@@ -108,7 +94,9 @@ public class Main {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            t++;
+            for(int i = 0; i<50;i++) {
+            	System.out.println();
+            }
         }
         semaforoNorth.getThread().stop();
         semaforoWest.getThread().stop();
@@ -116,7 +104,6 @@ public class Main {
         semaforoSouth.getThread().stop();
         Float[] vecTiempos =  new Float[4*N];
         int i= 0;
-        System.out.println(aleatorio.carTiempos.size());
         while(aleatorio.carTiempos.count != 0) {
         	vecTiempos[i] = aleatorio.carTiempos.dequeue().getTimer();
         	i++;
@@ -155,8 +142,6 @@ public class Main {
         int n = scan.nextInt();
         System.out.println("Coloque el tiempo de los semaforos en milisegundos.");
         int tiempo = scan.nextInt();
-        
-        
         proceso(n,tiempo);
     }
 }

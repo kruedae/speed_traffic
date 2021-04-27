@@ -15,7 +15,7 @@ public class Car implements Runnable{
     int direction;
     Place place;
     int timer;
-    int speed = 2; //int places per second
+    int speed = 4; //int places per second
 	Thread t;
 	
     
