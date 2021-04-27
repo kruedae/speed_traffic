@@ -15,7 +15,7 @@ public class Car implements Runnable{
     int direction;
     Place place;
     int timer;
-    int speed = 4; //int places per second
+    int speed = 1000; //int places per second
 	Thread t;
 	
     
@@ -55,7 +55,7 @@ public class Car implements Runnable{
 		    	        if(this.place.isMeasuring()){
 		    	        	this.place.setContCarros(this. place.getContCarros()+1);
 		    	        }
-	    	        	int time = 1000/this.speed;
+	    	        	int time = 1/this.speed;
 	    				Thread.sleep(time);
 	    				this.timer+=time;
 		        	}
@@ -63,14 +63,14 @@ public class Car implements Runnable{
 	    			Place lugar = this.place;
 	    			this.place = this.place.GetnextPlace_direction(this.direction);
 	    			lugar.setBlocked(false);
-	    			this.getThread().stop();
+	    			return;
 	    			
 	    		}
 	    		Thread.sleep(1);
 	    		this.timer+=1;
 	    	}
 		}catch(Exception e) {
-			System.out.print("Error1: "+e);
+			return;
     	}
     }
     

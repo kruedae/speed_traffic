@@ -146,7 +146,7 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         System.out.println("Coloque la cantidad de carros que van a entrar por cola.");
         int n = scan.nextInt();
-        System.out.println("Coloque el tiempo de los semaforos en milisegundos.");
+        System.out.println("Coloque el tiempo de los semaforos en segundos.");
         int tiempo = scan.nextInt();
         proceso(n,tiempo);
     }

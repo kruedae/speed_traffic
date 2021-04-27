@@ -25,16 +25,22 @@ public class Aleatorio {
 		Car lastCar=null;
 		while(cola.count !=0){
 			Car uncarro = cola.dequeue();
-			uncarro.getThread().start();
+			if(!uncarro.place.GetnextPlace_direction(uncarro.direction).blocked) {
+				uncarro.getThread().start();
+				System.out.println("Un carro ha iniciado, faltan: "+cola.count);
+			}else {
+				cola.enqueue(uncarro);
+			}
 			if(cola.count==1) {
 				lastCar = uncarro;
 			}
-			try {
-				Thread.sleep(250);
+			//System.out.println("Cuenta: "+ cola.count);
+			/*try {
+				Thread.sleep(1/uncarro.getSpeed());
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 		}
 		return lastCar;
 		
